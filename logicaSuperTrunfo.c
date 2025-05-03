@@ -68,10 +68,13 @@ int main() {
      * Entrada de dados da Carta 1
      */
     printf("\n### Bem-vindo ao Super Trunfo. ###\n");
-    printf("-Voce ira registrar duas cartas, e depois escolher dois atributos para comparalas.\n");
+    printf("- Registre duas cartas, e em seguida escolha dois atributos para comparalas.\n");
 
-    printf("-----\nComeçou!\n------\n")
-    printf("Cadastro da Carta 1\n");
+    printf("\n------------------------");
+    printf("\n# COMEÇOU:\n");
+    printf("------------------------\n");
+
+    printf("- Cadastro da Carta 1\n");
 
     printf("Informe o Nome do Pais: ");
     scanf(" %[^\n]", nomeDaCidade1); //  %[^\n] permite ler nomes com espaços
@@ -87,7 +90,7 @@ int main() {
     // /*
     //  * Entrada de dados da Carta 2
     //  */
-    printf("\nCadastro da Carta 2\n");
+    printf("\n- Cadastro da Carta 2\n");
 
     printf("Informe o Nome do Pais: ");
     scanf(" %[^\n]", nomeDaCidade2);
@@ -109,14 +112,16 @@ int main() {
         Densidade Populacional: 8102.47 hab/km²
         PIB per capita: 56724.32 reais
     */
-    printf("\n---------\nCARTAS REGISTRADAS\n---------\n");
+    printf("\n------------------------");
+    printf("\n# CARTAS REGISTRADAS:\n");
+    printf("------------------------\n");
     // Exibição dos dados da Carta 1
-    printf("\n## Carta 1:\n");
+    printf("## Carta 1:\n");
     printf("-Nome da Cidade: %s\n", nomeDaCidade1);
-    printf("-População: %d\n", populacao1);
+    printf("-População: %d \n", populacao1);
     printf("-Área: %.2f km²\n", area1);
     printf("-PIB: %.2f bilhões de reais\n", pib1);
-    printf("-Número de Pontos Turísticos: %d\n", pontosTuristicos1);
+    printf("-Número de Pontos Turísticos: %d \n", pontosTuristicos1);
 
     // Calcular densidade
     densidadePopulacional1 = populacao1 / area1;
@@ -129,52 +134,59 @@ int main() {
 
     // // Exibição dos dados da Carta 2
     printf("\n## Carta 2:\n");
-    printf("-Nome da Cidade: %s\n", nomeDaCidade2);
-    printf("-População: %d\n", populacao2);
+    printf("-Nome da Cidade: %s \n", nomeDaCidade2);
+    printf("-População: %d \n", populacao2);
     printf("-Área: %.2f km²\n", area2);
     printf("-PIB: %.2f bilhões de reais\n", pib2);
-    printf("-Número de Pontos Turísticos: %d\n", pontosTuristicos2);
+    printf("-Número de Pontos Turísticos: %d \n", pontosTuristicos2);
     // Calcular dencidade
     densidadePopulacional2 = (float)populacao2 / (float)area2;
-    printf("Densidade Populacional %.2f hab/km²\n", densidadePopulacional2); // ex: 8102.47 hab/km²
+    printf("-Densidade Populacional %.2f hab/km²\n", densidadePopulacional2); // ex: 8102.47 hab/km²
     // calcular pib per capita
     pibPerCapital2 = (float)pib2 / (float)populacao2;
-    printf("PIB per capita: %.2f reais\n", pibPerCapital2); //56724.32 reais
+    printf("-PIB per capita: %.2f reais\n", pibPerCapital2); //56724.32 reais
 
     /*
         Comparação de Cartas:
     */
-    printf("------------------------");
-    printf("\n-COMPARAÇAO DE CARTAS:\n");
+    printf("\n------------------------");
+    printf("\n# COMPARAÇAO DE CARTAS:\n");
     printf("------------------------\n");
 
     // numero para comparar os requisitos
     int numeroDeComparacao1;
     int numeroDeComparacao2;
-    char atributoNome1[20];
-    char atributoNome2[20];
+    char* atributoNome1;
+    char* atributoNome2;
     float somaCarta1 = 0;
     float somaCarta2 = 0;
+    // valores dos atibutos
+    float valorPrimeiroAtributoCarta1;
+    float valorPrimeiroAtributoCarta2;
+    float valorSegundoAtributoCarta1;
+    float valorSegundoAtributoCarta2;
 
     printf("# Escolha o primeiro Atributo para comparação:\n");
     printf("1: Populacao. \n2: Area. \n3: PIB. \n4: Pontos turisticos. \n5: Densidade populacional.\n");
     printf("# Digite o numero da sua escolha: ");
     scanf("%d", &numeroDeComparacao1);
 
-    printf("\n\n=-=-=- PRIMEIRA COMPARAÇAO -=-=-=\n");
+    printf("\n------------------------");
+    printf("\n# PRIMEIRA COMPARAÇAO:\n");
+    printf("------------------------\n");
     printf("- Paises: %s VS %s \n", nomeDaCidade1, nomeDaCidade2);
 
     switch (numeroDeComparacao1)
     {
     case 1:
-        printf("Atributo usado na comparaçao: Populaçao\n");
+        printf("- Atributo usado na comparaçao: Populaçao\n");
         printf("(%d) VS (%d)\n", populacao1, populacao2);
 
         if (populacao1 > populacao2) {
             printf("### O pais %s venceu. ###", nomeDaCidade1);
         }
         else if (populacao1 == populacao2) { // empate
-            printf("### Os paises empataram neste atributo. ###");
+            printf("### Os paises empataram neste atributo. ###\n");
         }
         else {
             printf("### O pais %s venceu. ###\n", nomeDaCidade2);
@@ -183,6 +195,10 @@ int main() {
         atributoNome1 = "População";
         somaCarta1 += (float) populacao1;
         somaCarta2 += (float) populacao2;
+
+        // valor atributos
+        valorPrimeiroAtributoCarta1 = (float) populacao1;
+        valorPrimeiroAtributoCarta2 = (float) populacao2;
 
         break;
 
@@ -195,7 +211,7 @@ int main() {
             printf("### O pais %s venceu. ###", nomeDaCidade1);
         } 
         else if (area1 == area2) { // empate
-            printf("### Os paises empataram neste atributo. ###");
+            printf("### Os paises empataram neste atributo. ###\n");
         }
         else {
             printf("### O pais %s venceu. ###\n", nomeDaCidade2);
@@ -204,6 +220,10 @@ int main() {
         atributoNome1 = "Area";
         somaCarta1 += (float) area1;
         somaCarta2 += (float) area2;
+
+        // valor atributos
+        valorPrimeiroAtributoCarta1 = area1;
+        valorPrimeiroAtributoCarta2 = area2;
 
         break;
 
@@ -216,7 +236,7 @@ int main() {
             printf("### O pais %s venceu. ###", nomeDaCidade1);
         }
         else if (pib1 == pib2) { // empate
-            printf("### Os paises empataram neste atributo. ###");
+            printf("### Os paises empataram neste atributo. ###\n");
         }
         else {
             printf("### O pais %s venceu. ###\n", nomeDaCidade2);
@@ -225,6 +245,10 @@ int main() {
         atributoNome1 = "PIB";
         somaCarta1 += (float) pib1;
         somaCarta2 += (float) pib2;
+
+        // valor atributos
+        valorPrimeiroAtributoCarta1 = pib1;
+        valorPrimeiroAtributoCarta2 = pib2;
         
         break;
 
@@ -237,7 +261,7 @@ int main() {
             printf("### O pais %s venceu. ###", nomeDaCidade1);
         } 
         else if (densidadePopulacional1 == densidadePopulacional2) { // empate
-            printf("### Os paises empataram neste atributo. ###");
+            printf("### Os paises empataram neste atributo. ###\n");
         }
         else {
             printf("### O pais %s venceu. ###\n", nomeDaCidade2);
@@ -246,6 +270,10 @@ int main() {
         atributoNome1 = "Densidade";
         somaCarta1 += (float) densidadePopulacional1;
         somaCarta2 += (float) densidadePopulacional2;
+
+        // valor atributos
+        valorPrimeiroAtributoCarta1 = densidadePopulacional1;
+        valorPrimeiroAtributoCarta2 = densidadePopulacional2;
 
         break;
 
@@ -258,7 +286,7 @@ int main() {
             printf("### O pais %s venceu. ###\n", nomeDaCidade1);
         } 
         else if (pontosTuristicos1 == pontosTuristicos2) { // empate
-            printf("### Os paises empataram neste atributo. ###");
+            printf("### Os paises empataram neste atributo. ###\n");
         }
         else {
             printf("### O pais %s venceu. ###\n", nomeDaCidade2);
@@ -267,6 +295,10 @@ int main() {
         atributoNome1 = "Pontos Turisticos";
         somaCarta1 += (float) pontosTuristicos1;
         somaCarta2 += (float) pontosTuristicos2;
+
+        // valor atributos
+        valorPrimeiroAtributoCarta1 = (float) pontosTuristicos1;
+        valorPrimeiroAtributoCarta2 = (float) pontosTuristicos2;
 
         break;
 
@@ -288,7 +320,7 @@ int main() {
     if (numeroDeComparacao1 != 4) printf("4: Pontos turisticos. \n");
     if (numeroDeComparacao1 != 5) printf("5: Densidade populacional.\n");
 
-    printf("\n# Digite o numero da sua escolha: ");
+    printf("# Digite o numero da sua escolha: ");
     scanf("%d", &numeroDeComparacao2);
 
     // verificar se foi escolhida a mesma opçao
@@ -297,20 +329,21 @@ int main() {
         return 0;
     }
 
-    printf("\n\n=-=-=- SEGUNDA COMPARAÇAO -=-=-=\n");
-    // printf("- Paises: %s VS %s \n", nomeDaCidade1, nomeDaCidade2);
+    printf("\n------------------------");
+    printf("\n# SEGUNDA COMPARAÇAO:\n");
+    printf("------------------------\n");
 
     switch (numeroDeComparacao2)
     {
     case 1:
         printf("Atributo usado na comparaçao: Populaçao\n");
-        printf("(%d) VS (%d)\n", populacao1, populacao2);
+        printf("(%.2f) VS (%.2f)\n", populacao1, populacao2);
 
         if (populacao1 > populacao2) {
             printf("### O pais %s venceu. ###", nomeDaCidade1);
         }
         else if (populacao1 == populacao2) { // empate
-            printf("### Os paises empataram neste atributo. ###");
+            printf("### Os paises empataram neste atributo. ###\n");
         }
         else {
             printf("### O pais %s venceu. ###\n", nomeDaCidade2);
@@ -319,6 +352,10 @@ int main() {
         atributoNome2 = "População";
         somaCarta1 += (float) populacao1;
         somaCarta2 += (float) populacao2;
+
+        // valor atributos
+        valorSegundoAtributoCarta1 = populacao1;
+        valorSegundoAtributoCarta2 = populacao2;
 
         break;
 
@@ -331,7 +368,7 @@ int main() {
             printf("### O pais %s venceu. ###", nomeDaCidade1);
         } 
         else if (area1 == area2) { // empate
-            printf("### Os paises empataram neste atributo. ###");
+            printf("### Os paises empataram neste atributo. ###\n");
         }
         else {
             printf("### O pais %s venceu. ###\n", nomeDaCidade2);
@@ -340,6 +377,10 @@ int main() {
         atributoNome2 = "Area";
         somaCarta1 += (float) area1;
         somaCarta2 += (float) area2;
+
+        // valor atributos
+        valorSegundoAtributoCarta1 = area1;
+        valorSegundoAtributoCarta2 = area2;
 
         break;
 
@@ -352,7 +393,7 @@ int main() {
             printf("### O pais %s venceu. ###", nomeDaCidade1);
         }
         else if (pib1 == pib2) { // empate
-            printf("### Os paises empataram neste atributo. ###");
+            printf("### Os paises empataram neste atributo. ###\n");
         }
         else {
             printf("### O pais %s venceu. ###\n", nomeDaCidade2);
@@ -362,6 +403,10 @@ int main() {
         somaCarta1 += (float) pib1;
         somaCarta2 += (float) pib2;
         
+        // valor atributos
+        valorSegundoAtributoCarta1 = pib1;
+        valorSegundoAtributoCarta2 = pib2;
+
         break;
 
     case 4:
@@ -370,10 +415,10 @@ int main() {
         printf("(%.2f) VS (%.2f)\n", densidadePopulacional1, densidadePopulacional2);
         
         if (densidadePopulacional1 < densidadePopulacional2) {
-            printf("### O pais %s venceu. ###", nomeDaCidade1);
+            printf("### O pais %s venceu. ###\n", nomeDaCidade1);
         } 
         else if (densidadePopulacional1 == densidadePopulacional2) { // empate
-            printf("### Os paises empataram neste atributo. ###");
+            printf("### Os paises empataram neste atributo. ###\n");
         }
         else {
             printf("### O pais %s venceu. ###\n", nomeDaCidade2);
@@ -382,6 +427,10 @@ int main() {
         atributoNome2 = "Densidade";
         somaCarta1 += (float) densidadePopulacional1;
         somaCarta2 += (float) densidadePopulacional2;
+
+        // valor atributos
+        valorSegundoAtributoCarta1 = densidadePopulacional1;
+        valorSegundoAtributoCarta2 = densidadePopulacional2;
 
         break;
 
@@ -394,7 +443,7 @@ int main() {
             printf("### O pais %s venceu. ###\n", nomeDaCidade1);
         } 
         else if (pontosTuristicos1 == pontosTuristicos2) { // empate
-            printf("### Os paises empataram neste atributo. ###");
+            printf("### Os paises empataram neste atributo. ###\n");
         }
         else {
             printf("### O pais %s venceu. ###\n", nomeDaCidade2);
@@ -403,6 +452,10 @@ int main() {
         atributoNome2 = "Pontos Turisticos";
         somaCarta1 += (float) pontosTuristicos1;
         somaCarta2 += (float) pontosTuristicos2;
+
+        // valor atributos
+        valorSegundoAtributoCarta1 = (float) pontosTuristicos1;
+        valorSegundoAtributoCarta2 = (float) pontosTuristicos2;
 
         break;
 
@@ -413,28 +466,42 @@ int main() {
         break;
     }
 
+    printf("\n------------------------");
+    printf("\n# RESULTADO FINAL:\n");
+    printf("------------------------\n");
 
-    int cartaVencedora = somaCarta1 > somaCarta2 ? 1 : 2;
-
-    printf("\n#######################\n")
-    printf("### Resultado Final ###")
-    printf("\n#######################\n")
     // O nome dos dois países.
     printf("- Paises: %s VS %s \n", nomeDaCidade1, nomeDaCidade2);
     // Os dois atributos usados na comparação.
-    printf("- Atributos: 1° %s, 2° %s", atributoNome1, atributoNome2);
+    printf("- Atributos: 1°: %s, 2°: %s \n", atributoNome1, atributoNome2);
     // Os valores de cada atributo para cada carta.
+    printf("- Valor atributos:\n");
+    printf("-- %s: \n", atributoNome1);
+    printf("--- %s: %.2f \n", nomeDaCidade1, valorPrimeiroAtributoCarta1);
+    printf("--- %s: %.2f \n", nomeDaCidade2, valorPrimeiroAtributoCarta2);
+    //segunda carta
+    printf("-- %s: \n", atributoNome2);
+    printf("--- %s: %.2f \n", nomeDaCidade1, valorSegundoAtributoCarta1);
+    printf("--- %s: %.2f \n", nomeDaCidade2, valorSegundoAtributoCarta2);
     
     // A soma dos atributos para cada carta.
-    
+    printf("Soma Atributos:\n");
+    printf("-- %s: \n", nomeDaCidade1);
+    printf("--- %.2f \n", somaCarta1);
+    printf("-- %s: \n", nomeDaCidade2);
+    printf("--- %.2f \n", somaCarta2);
     // Qual carta venceu (ou se houve empate).
 
-
-
-
-
-
-
+    printf("\n------------------------");
+    char* vencedor;
+    if (somaCarta1 == somaCarta2) {
+        vencedor = "EMPATOU!";
+    } else {
+        vencedor = (somaCarta1 > somaCarta2) ? "CARTA 1 VENCEU!" : "CARTA 2 VENCEU!";
+    }
+    
+    printf("\n# %s \n", vencedor);
+    printf("------------------------\n");
 
     return 0;
 }
